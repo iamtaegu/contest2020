@@ -34,7 +34,7 @@ app.all('*', function (request, response){
 
 app.use('/', router);
 
-app.listen(80, function() {
-    console.log("Application Running at port 80");
+app.listen(8080, function() {
+    console.log("Application Running at port 8080");
 })
 
