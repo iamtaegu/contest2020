@@ -10,8 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "http": "0.0.1-security",
+    "mongodb": "^3.6.0",
+    "mongoose": "^5.9.27",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.4",
     "vue-responsive-dash": "^0.4.3"

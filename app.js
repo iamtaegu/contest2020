@@ -1,12 +1,25 @@
+// load .env
+require('dotenv').config();
+
 var url = require('url');
 var express = require('express'); 
 var app = express(); 
 var router = express.Router();
 var fs = require('fs');
 
-var morgan = require('morgan');
-
-//app.use(morgan('combined'));
+/*
+* mongodb connection by using mongoose 
+* 예외처리를 위한 Node.js promise 사용 
+* Define Schemes by using mongoose.Schema
+*/
+var mongoose = require('mongoose');
+// Node.js의 native Promise 사용
+mongoose.Promise = global.Promise;
+mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('Successfully connected to mongodb'))
+  .catch(e => console.error(e));
+// DB router 
+app.use('/todos', require('./router/todos'));
 
 router.get('/:id', function(request, response){
 
@@ -23,6 +36,7 @@ router.get('/:id', function(request, response){
         fs.createReadStream('.'+pathData).pipe(response); 
     }
 });
+
 
 
 app.all('*', function (request, response){
