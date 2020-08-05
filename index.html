@@ -7,10 +7,10 @@
 
         <!-- 비씨카드 main css-->
         <link rel="stylesheet" type="text/css" href="https://www.bccard.com/css/individual/main_2016.css" />
+        <link rel="stylesheet" type="text/css" href="https://www.bccard.com/css/individual/common.css" />
         <!-- 비씨카드 event css-->
         <!-- <link rel="stylesheet" type="text/css" href="https://www.bccard.com/css/individual/main.css" /> -->
         <link rel="stylesheet" type="text/css" href="https://www.bccard.com/css/individual/evbenefit_2019.css" />
-        <!-- <link rel="stylesheet" type="text/css" href="https://www.bccard.com/css/individual/event_2014.css" />         -->
     </head>
 
     <body>
@@ -21,47 +21,48 @@
                 <ul class="topMenu">
                     <li class="par"><a href="#" target="_blank" title="새 창 열림"><span class="displayN">정부</span></a></li>
                     <li class="corp"><a href="" target="_blank" title="새 창 열림"><span class="displayN">기업</span></a></li>
-                    <li class="vip"><a href="" target="_blank" title="새 창 열림"><span class="displayN">VIP</span></a></li>
                 </ul>
                 <div class="search_wrap">
                     <ul class="loginMenu">
                         <li><a href="#" class="login">로그인</a></li>
                         <li><a href="#">회원가입</a></li>
-                        <li class="u"><a href="#">공인인증센터</a></li>
                         <li><a href="#">상품공시실</a></li>
                         <li><a href="#">고객센터</a></li>
                     </ul>		
                 </div>
             </div>
-            <div class="gnbDepth">			
-                <div class="gnbBg"></div>
-                <ul>
-                    <!-- gnbNavi -->
-                    <li class="gnbOne">
-                    <a href="#link"><span>전통시장</span></a>
-                    </li>
-                    <li class="gnbOne">
-                    <a href="#link"><span>시장정보</span></a>
-                    </li>
-                    <li class="gnbOne">
-                    <a href="#link"><span>동영상</span></a>
-                    </li>
-                    <!-- <li class="gnbOne">
-                    <a href="#link"><span>전통시장몰</span></a>
-                    </li> -->
-                    <li class="gnbOne">
-                    <a href="#link"><span>게시판</span></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
 
+            <div class='allmenu_wrap'>
+                <div class="gnbDepth">			
+                    <div class="gnbBg"></div>
+                    <ul>
+                        <!-- gnbNavi -->
+                        <li class="gnbOne">
+                        <a href="#link"><span>전통시장</span></a>
+                        </li>
+                        <li class="gnbOne">
+                        <a href="#link"><span>시장정보</span></a>
+                        </li>
+                        <li class="gnbOne">
+                        <a href="#link"><span>동영상</span></a>
+                        </li>
+                        <!-- <li class="gnbOne">
+                        <a href="#link"><span>전통시장몰</span></a>
+                        </li> -->
+                        <li class="gnbOne">
+                        <a href="#link"><span>게시판</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
         <div id="container" class="main">
             <div id="mainVisual">
                 <div class="visualWrap">
                     <div class="visualSlider">
                         <ul class="slides">
-                            <li class="visual1" style="background:url(https://lh3.googleusercontent.com/proxy/sAmClmMc4Q1WDPZsHdCJIXxyCsmlIR3HijUNJxYPilPDwmtTxI2a38u8fS5UkCBMs5nD0ZduNgnlcgF9vL4fZGChZj-wQ8Zvn4vEt7w4zbfKhCP7LnbmzQ) no-repeat center 0;">
+                            <li class="visual1" style="background:url(https://lh3.googleusercontent.com/proxy/8JnBtYdkL9Atrwiy5C4IH1ZdXxA9oAfbh0AcEJwpjLLxOhbdNTs2NfZ47KKsmf3qGli0PSM2FMteMyUpvbgRrDXB7QbY5InrbZNA0Vqf0FOmUUxDx0cMMw) no-repeat center 0;">
                             </li>
                         </ul>
                     </div>
@@ -130,20 +131,57 @@
 
         <div class="evb_mytag_cont">
 			<div class="tit_wrap">
-				<h3 class="tit_dep02">나만의 맞춤 영상 #전통시장</h3>
+                <h3 class="tit_dep02">나만의 맞춤 영상 #전통시장</h3>
+                <a href='#' class='arr_r01'>더보기</a>
 			</div>
 			<div class="tit_desc">원하는 영상을 선택하고 시청하세요
-				<a href="#link" class="sign_excl01" onclick="fnEvbLpop('.lpop_mytag_guide', this);">#영상시청 가이드</a>
-			</div>
+                <a href="#link" class="sign_excl01" onclick="">#영상시청 가이드</a>
+                <a href="#link" class="sign_excl01" onclick="">#다운로드 가이드</a>
+            </div>
+            
 			<div class="mytag_slider_wrap">
-				<div class="wrap_inner">
-					<div class="mytag_slider" id="mytagconfirm" style="display: on;">						
+
+                <div class="wrap_inner">
+
+                <!-- 영상 없음 S -->
+					<div class="mytag_slider" id="mytagconfirm" style="display: none;">						
 						<div class="no_mytag">
 							영상을 준비하고 있습니다.
 						</div>
                     </div>
+                <!-- 영상 없음 E -->    
+
+
+                    <div class="mytag_slider type01" id="mytagslider">
+                        
+						<ul> 
+							<li>
+								<div class="item_left">
+                                    <div class="item_inner">
+                                        <a> <div class="item_inner_left">
+                                                <iframe width="400" height="215" src="https://www.youtube.com/embed/3sTIwvfijM4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                            </div>
+                                            <div class="item_inner_right"><span class='right_inner'></span></div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="item_right">
+                                    <div class="item_inner">
+                                        <a> <div class="item_inner_left">
+                                                <iframe width="400" height="215" src="https://www.youtube.com/embed/3sTIwvfijM4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                            </div>
+                                            <div class="item_inner_right"><span class='right_inner'></span></div>
+                                        </a>
+                                    </div>
+                                </div>    
+                            </li>
+                        </ul>
+                        
+					</div>
                 </div>
+
             </div>
+
         </div>
 
         <div class="evb_autopay_cont">
