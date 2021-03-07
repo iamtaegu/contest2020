@@ -9,10 +9,12 @@ var router = express.Router();
 var mongoose = require('mongoose');
 // Node.js의 native Promise 사용
 mongoose.Promise = global.Promise;
+console.log (process.env.MONGO_URL);
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Successfully connected to mongodb'))
   .catch(e => console.error(e));
-
+  
+/*
 var posts = require("../models/post"); // 스키마 불러오기
 
 // Create
@@ -25,6 +27,6 @@ postModel.save().then(newPost => {
       .catch(err => {
         console.log("err");
       });
-
+*/
 
 module.exports = router;

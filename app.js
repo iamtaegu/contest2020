@@ -12,13 +12,20 @@ var fs = require('fs');
 * router 로 시작, const과 js 이름 동일 
 */ 
 const routerMongodb = require('./router/routerMongodb'); 
+app.get('/mongoDB', routerMongodb); 
 
 app.get('/img/:id', function(request, response){
     var target = request.url;
     fs.createReadStream('.'+target).pipe(response); 
 });
 
-app.get('/mongoDB', routerMongodb); 
+app.get('/map', function(request, response){
+    console.log("map 2");
+
+    response.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
+    fs.createReadStream("./html/map.html").pipe(response);
+
+});
 
 app.all('*', function (request, response){
 

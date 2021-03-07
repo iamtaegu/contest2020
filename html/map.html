@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      type="text/x-javascript"
+      src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=xo6k45f9ko&submodules=geocoder"
+    ></script> 
+    <style>
+      .map {
+        width: 100%;
+        height: 500px;
+      }
+      table {
+        width: 100;
+      }
+      td {
+        border: 1px solid #dddddd;
+        background-color: #dddddd;
+      }
+      .menu{
+        cursor: pointer;
+      }
+    </style>
+    <script>
+      var markerList = [];
+      var marker;
+      var map;
+      var infoWindow;
+
+      $(document).ready(function () {
+        map = new naver.maps.Map("map", {
+          center: new naver.maps.LatLng(37.565925,126.9974568),
+          zoom: 15,
+          mapTypeControl: true,
+        });
+        marker = new naver.maps.Marker({
+            position: naver.maps.LatLng(37.565925,126.9974568),
+            map: map,
+        });
+        markerList.push(marker);
+        infoWindow = new naver.maps.InfoWindow({
+          anchorSkew: true,
+        });        
+
+      });
+
+      function move(lat, lng){
+        remove();
+
+        var latlng = new naver.maps.LatLng(lat,lng);
+
+        marker = new naver.maps.Marker({
+            position: latlng,
+            map: map,
+        });
+        markerList.push(marker);
+
+        infoWindow.close();
+        naver.maps.Service.reverseGeocode(
+            {
+                coords: latlng,
+                orders: [
+                naver.maps.Service.OrderType.ADDR,
+                naver.maps.Service.OrderType.ROAD_ADDR,
+                ].join(","),
+            },
+            function (status, response) {
+              var address = response.v2.address,
+                htmlAddresses = [];
+              if (address.jibunAddress !== "") {
+                htmlAddresses.push("[지번 주소] " + address.jibunAddress);
+              }
+              if (address.roadAddress !== "") {
+                htmlAddresses.push("[도로명 주소] " + address.roadAddress);
+              }
+              infoWindow.setContent(
+                [
+                  '<div style="padding:10px;min-width:200px;line-height:150%;">',
+                  '<h4 style="margin-top:5px;">검색 좌표</h4><br />',
+                  htmlAddresses.join("<br />"),
+                  "</div>",
+                ].join("\n")
+              );
+              infoWindow.open(map, latlng);
+            }
+        );
+
+        map.panTo(latlng);
+        //map.setCenter(latlng);
+      }
+
+      function remove(){
+        for (var i = 0, ii = markerList.length; i < ii; i++) {
+                markerList[i].setMap(null);
+        }
+        markerList = [];
+      }
+
+    </script>
+  </head>
+  <body>
+    <div id="map" class='map' ></div>
+
+    <br/>
+    <table>
+      <tr>
+        <td class='menu' onClick='javascript:move(37.565925, 126.9974568);'>을지트윈</td>
+        <td class='menu' onClick='javascript:move(37.5649385, 126.9889166);'>백병원</td>
+        <td class='menu' onClick='javascript:move(37.5710954, 126.9950965);'>종묘공원</td>
+        <td class='menu' onClick='javascript:move(37.5617876, 127.0372018);'>왕십리역</td>
+        <td class='menu' onClick='javascript:move(37.5355459, 126.9740304);'>삼각지역</td>
+      </tr>
+    </table>
+  </body>
+</html>
+
+
+<!-- 
+    백병원 37.5649385, 126.9889166 
+    종묘공원 37.5710954, 126.9950965
+    왕십리역 37.5617876, 127.0372018
+    삼각지역 37.5355459, 126.9740304
+-->
